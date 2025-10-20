@@ -1,10 +1,29 @@
-# Проект по аналитике
+# Analytics Project
 
-## Архитектура проекта
+## Запуск проекта
+
+### Установка зависимостей
+```bash
+npm install
+```
+
+### Запуск в режиме разработки
+```bash
+npm run dev
+```
+
+### Сборка для продакшена
+```bash
+npm run build
+npm start
+```
+
+## Архитектура
 
 ### Технический стек
-- **Frontend**: Next.js
-- **Backend**: FastAPI или NestJS
+- **Frontend**: Next.js 14 с App Router
+- **Backend**: FastAPI или NestJS (будет добавлен)
+- **Стили**: Tailwind CSS
 - **SEO**: Оптимизация для поисковых систем
 
 ### Принципы разработки
@@ -42,3 +61,20 @@
 - Не создавать документацию
 - Только функциональный код
 - Минимум файлов, максимум эффективности
+
+## Структура проекта
+
+```
+all-for-analytics/
+├── app/                    # Next.js App Router
+│   ├── globals.css        # Глобальные стили
+│   ├── layout.tsx         # Корневой layout
+│   └── page.tsx           # Главная страница
+├── components/            # Компоненты
+│   └── ui/               # UI компоненты
+├── config/               # Конфигурация
+│   └── api.ts           # API конфиг
+├── package.json         # Зависимости
+├── tailwind.config.js   # Tailwind конфиг
+└── tsconfig.json        # TypeScript конфиг
+```
