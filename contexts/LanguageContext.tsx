@@ -27,12 +27,12 @@ interface LanguageProviderProps {
 const translations = {
   ru: {
     'site.name': 'Analytics Project',
-    'nav.demo': 'Demo',
-    'nav.analytics': 'Analytics',
-    'nav.reports': 'Reports',
-    'nav.dashboard': 'Dashboard',
-    'nav.settings': 'Settings',
-    'nav.help': 'Help',
+    'nav.demo': 'Демо',
+    'nav.analytics': 'Аналитика',
+    'nav.reports': 'Отчеты',
+    'nav.dashboard': 'Панель',
+    'nav.settings': 'Настройки',
+    'nav.help': 'Помощь',
     'user.account_settings': 'Account Settings',
     'user.view_agents': 'View Agents',
     'user.log_out': 'Log Out',
@@ -47,7 +47,13 @@ const translations = {
     'footer.copyright': '© 2024 Analytics Project. Все права защищены.',
     'footer.about': 'О проекте',
     'footer.docs': 'Документация',
-    'footer.support': 'Поддержка'
+    'footer.support': 'Поддержка',
+    'auth.login': 'Войти',
+    'auth.register': 'Зарегистрироваться',
+    'theme.light': 'Светлая тема',
+    'theme.dark': 'Темная тема',
+    'language.ru': 'RU',
+    'language.en': 'EN'
   },
   en: {
     'site.name': 'Analytics Project',
@@ -71,7 +77,13 @@ const translations = {
     'footer.copyright': '© 2024 Analytics Project. All rights reserved.',
     'footer.about': 'About',
     'footer.docs': 'Documentation',
-    'footer.support': 'Support'
+    'footer.support': 'Support',
+    'auth.login': 'Login',
+    'auth.register': 'Register',
+    'theme.light': 'Light theme',
+    'theme.dark': 'Dark theme',
+    'language.ru': 'RU',
+    'language.en': 'EN'
   }
 };
 

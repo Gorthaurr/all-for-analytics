@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({
   className = ''
 }) => {
   return (
-    <footer className={`w-full p-4 py-6 border-t border-gray-200/20 dark:border-gray-700/20 ${className}`}>
+    <footer className={`w-full px-6 py-6 border-t border-gray-200/20 dark:border-gray-700/20 ${className}`}>
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="text-sm text-gray-600 dark:text-gray-400">
           {copyright}
@@ -36,12 +36,6 @@ export const Footer: React.FC<FooterProps> = ({
             ))}
           </nav>
         )}
-      </div>
-      
-      <div className="mt-4 text-center">
-        <p className="text-xs text-gray-500 dark:text-gray-500">
-          Создано с ❤️ используя Next.js, TypeScript и Tailwind CSS
-        </p>
       </div>
     </footer>
   );

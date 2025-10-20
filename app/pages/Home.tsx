@@ -16,32 +16,32 @@ export default function Home() {
             <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               {t('home.welcome')}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto min-h-[4.5rem] leading-relaxed">
               {t('home.subtitle')}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg min-h-[200px] flex flex-col">
               <div className="text-4xl mb-4">📊</div>
               <h3 className="text-xl font-semibold mb-2">{t('home.analytics.title')}</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 dark:text-gray-400 flex-1">
                 {t('home.analytics.desc')}
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg min-h-[200px] flex flex-col">
               <div className="text-4xl mb-4">🎨</div>
               <h3 className="text-xl font-semibold mb-2">{t('home.design.title')}</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 dark:text-gray-400 flex-1">
                 {t('home.design.desc')}
               </p>
             </div>
             
-            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg">
+            <div className="p-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg min-h-[200px] flex flex-col">
               <div className="text-4xl mb-4">⚡</div>
               <h3 className="text-xl font-semibold mb-2">{t('home.performance.title')}</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <p className="text-gray-600 dark:text-gray-400 flex-1">
                 {t('home.performance.desc')}
               </p>
             </div>

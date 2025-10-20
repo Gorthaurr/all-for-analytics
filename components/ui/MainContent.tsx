@@ -20,7 +20,7 @@ export const MainContent: React.FC<MainContentProps> = ({
   };
 
   return (
-    <main className={`min-h-screen p-4 ${className}`}>
+    <main className={`min-h-screen px-6 py-4 ${className}`}>
       <div className={layoutStyles[layout]}>
         {children}
       </div>

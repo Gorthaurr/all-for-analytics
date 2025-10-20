@@ -36,7 +36,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const [authModalOpen, setAuthModalOpen] = useState(false);
 
   return (
-    <header className={`w-full p-4 border-b border-gray-200/20 dark:border-gray-700/20 ${className}`}>
+    <header className={`w-full px-6 py-4 border-b border-gray-200/20 dark:border-gray-700/20 ${className}`}>
       <div className="flex items-center justify-between">
         {/* Логотип/Название сайта */}
         <div className="flex items-center">
@@ -46,7 +46,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
         </div>
 
         {/* Центральная навигация */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6">
           {navItems.map((item, index) => (
             <a
               key={index}
@@ -67,8 +67,8 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
           {/* Тогл темной темы */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-white/10 dark:bg-gray-800/10 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-200"
-            title={isDarkMode ? 'Светлая тема' : 'Темная тема'}
+            className="w-10 h-10 rounded-lg bg-white/10 dark:bg-gray-800/10 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-200 flex items-center justify-center"
+            title={isDarkMode ? t('theme.light') : t('theme.dark')}
           >
             {isDarkMode ? (
               <svg className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -84,9 +84,9 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
           {/* Тогл языка */}
           <button
             onClick={toggleLanguage}
-            className="px-3 py-2 rounded-lg bg-white/10 dark:bg-gray-800/10 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-200 text-sm font-medium text-gray-700 dark:text-gray-300"
+            className="w-12 h-10 rounded-lg bg-white/10 dark:bg-gray-800/10 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-gray-800/20 transition-all duration-200 text-sm font-medium text-gray-700 dark:text-gray-300 flex items-center justify-center"
           >
-            {language === 'ru' ? 'RU' : 'EN'}
+            {t(`language.${language}`)}
           </button>
 
           {/* Профиль или кнопка входа */}
@@ -102,7 +102,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
               size="sm"
               onClick={() => setAuthModalOpen(true)}
             >
-              Войти
+              {t('auth.login')}
             </Button>
           )}
         </div>
