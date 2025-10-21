@@ -22,7 +22,7 @@ export const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   siteName,
   navItems = [
     { labelKey: 'nav.demo', href: '/demo', isActive: true },
-    { labelKey: 'nav.analytics', href: '/analytics' },
+    { labelKey: 'nav.erd', href: '/erd' },
     { labelKey: 'nav.reports', href: '/reports' },
     { labelKey: 'nav.dashboard', href: '/dashboard' },
     { labelKey: 'nav.settings', href: '/settings' },

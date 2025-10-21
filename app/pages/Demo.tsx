@@ -16,7 +16,19 @@ import {
   MainContent,
   EnvironmentToggle,
   Search
-} from '@/components/ui'
+} from '@/components/Base'
+import {
+  EntityNode,
+  AttributeNode,
+  RelationshipNode,
+  ConnectionLine,
+  NodeToolbar,
+  PropertyPanel,
+  DiagramToolbar,
+  Minimap,
+  ValidationPanel,
+  ExportTools
+} from '@/components/ERD'
 
 export default function Demo() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -24,6 +36,17 @@ export default function Demo() {
   const [toggleValue, setToggleValue] = useState(false)
   const [progressValue, setProgressValue] = useState(65)
   const [searchResults, setSearchResults] = useState<string[]>([])
+  
+  // ERD состояние
+  const [selectedERDNode, setSelectedERDNode] = useState<any>(null)
+  const [erdNodes, setErdNodes] = useState([
+    { id: '1', type: 'entity', name: 'Пользователь', x: 20, y: 20 },
+    { id: '2', type: 'attribute', name: 'ID', x: 320, y: 20, isKey: true },
+    { id: '3', type: 'relationship', name: 'Имеет', x: 500, y: 20, cardinality: '1:N' as const }
+  ])
+  const [erdConnections] = useState([
+    { id: '1', from: '1', to: '2', type: 'one-to-many' }
+  ])
 
   const handleSearch = (query: string) => {
     console.log('Поиск:', query)
@@ -236,8 +259,98 @@ export default function Demo() {
                 </Button>
               </div>
             </Card>
+           </div>
+
+        {/* СЕКЦИЯ: ERD КОМПОНЕНТЫ */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+            ERD компоненты
+          </h2>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Левая колонка - Инструменты */}
+            <div className="space-y-6">
+              <NodeToolbar
+                onAddEntity={() => console.log('Add Entity')}
+                onAddAttribute={() => console.log('Add Attribute')}
+                onAddRelationship={() => console.log('Add Relationship')}
+              />
+              
+              <PropertyPanel
+                selectedNode={selectedERDNode}
+                onUpdateNode={(id: string, updates: any) => console.log('Update node:', id, updates)}
+              />
+              
+              <ValidationPanel
+                issues={[
+                  { id: '1', type: 'warning', message: 'Сущность не имеет атрибутов', nodeId: 'entity_1' }
+                ]}
+                onIssueClick={(issue: any) => console.log('Issue clicked:', issue)}
+              />
+            </div>
+
+            {/* Правая колонка - Диаграмма */}
+            <div className="space-y-6">
+              <DiagramToolbar
+                onSave={() => console.log('Save')}
+                onLoad={() => console.log('Load')}
+                onClear={() => console.log('Clear')}
+                onExport={(format: any) => console.log('Export:', format)}
+                onZoomIn={() => console.log('Zoom In')}
+                onZoomOut={() => console.log('Zoom Out')}
+                onZoomReset={() => console.log('Zoom Reset')}
+              />
+              
+              <div className="relative h-96 w-full bg-gray-100/50 dark:bg-gray-700/50 rounded-xl border border-gray-200/30 dark:border-gray-600/30 overflow-hidden">
+                {/* Мини-диаграмма с узлами */}
+                <div className="relative w-full h-full">
+                  {erdNodes.map((node) => {
+                    const commonProps = {
+                      key: node.id,
+                      id: node.id,
+                      name: node.name,
+                      x: node.x,
+                      y: node.y,
+                      isSelected: selectedERDNode?.id === node.id,
+                      onSelect: setSelectedERDNode,
+                      onMove: (id: string, x: number, y: number) => {
+                        setErdNodes(prev => prev.map(n => n.id === id ? {...n, x, y} : n))
+                      }
+                    };
+
+                    switch (node.type) {
+                      case 'entity':
+                        return <EntityNode {...commonProps} />;
+                      case 'attribute':
+                        return <AttributeNode {...commonProps} isKey={node.isKey} />;
+                      case 'relationship':
+                        return <RelationshipNode {...commonProps} cardinality={node.cardinality} />;
+                      default:
+                        return null;
+                    }
+                  })}
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <Minimap
+                  nodes={erdNodes.map(node => ({ id: node.id, type: node.type, x: node.x, y: node.y }))}
+                  connections={erdConnections.map(conn => ({ id: conn.id, from: { x: 0, y: 0 }, to: { x: 0, y: 0 } }))}
+                  viewport={{ x: 0, y: 0, width: 400, height: 200 }}
+                  onViewportChange={() => {}}
+                />
+                
+                <ExportTools
+                  onExportPNG={() => console.log('Export PNG')}
+                  onExportSVG={() => console.log('Export SVG')}
+                  onExportJSON={() => console.log('Export JSON')}
+                  onExportPDF={() => console.log('Export PDF')}
+                />
+              </div>
+            </div>
           </div>
-      </MainContent>
+        </div>
+       </MainContent>
 
       {/* МОДАЛЬНОЕ ОКНО */}
       <Modal

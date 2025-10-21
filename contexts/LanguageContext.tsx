@@ -28,7 +28,7 @@ const translations = {
   ru: {
     'site.name': 'Analytics Project',
     'nav.demo': 'Демо',
-    'nav.analytics': 'Аналитика',
+    'nav.erd': 'ERD',
     'nav.reports': 'Отчеты',
     'nav.dashboard': 'Панель',
     'nav.settings': 'Настройки',
@@ -58,7 +58,7 @@ const translations = {
   en: {
     'site.name': 'Analytics Project',
     'nav.demo': 'Demo',
-    'nav.analytics': 'Analytics',
+    'nav.erd': 'ERD',
     'nav.reports': 'Reports',
     'nav.dashboard': 'Dashboard',
     'nav.settings': 'Settings',

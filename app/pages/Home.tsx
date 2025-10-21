@@ -1,6 +1,6 @@
 'use client'
 
-import { NavigationHeader, MainContent, Footer } from '@/components/ui'
+import { NavigationHeader, MainContent, Footer } from '@/components/Base'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 export default function Home() {
