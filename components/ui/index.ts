@@ -14,3 +14,4 @@ export { UserDropdown } from './UserDropdown';
 export { NavigationHeader } from './NavigationHeader';
 export { AuthModal } from './AuthModal';
 export { EnvironmentToggle } from './EnvironmentToggle';
+export { Search } from './Search';

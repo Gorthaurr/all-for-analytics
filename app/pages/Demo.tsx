@@ -14,7 +14,8 @@ import {
   Header,
   Footer,
   MainContent,
-  EnvironmentToggle 
+  EnvironmentToggle,
+  Search
 } from '@/components/ui'
 
 export default function Demo() {
@@ -22,6 +23,21 @@ export default function Demo() {
   const [dropdownValue, setDropdownValue] = useState('')
   const [toggleValue, setToggleValue] = useState(false)
   const [progressValue, setProgressValue] = useState(65)
+  const [searchResults, setSearchResults] = useState<string[]>([])
+
+  const handleSearch = (query: string) => {
+    console.log('Поиск:', query)
+    // Имитация результатов поиска
+    setSearchResults([
+      `Результат 1 для "${query}"`,
+      `Результат 2 для "${query}"`,
+      `Результат 3 для "${query}"`
+    ])
+  }
+
+  const handleClearSearch = () => {
+    setSearchResults([])
+  }
 
   const dropdownOptions = [
     { value: 'option1', label: 'Опция 1' },
@@ -79,6 +95,33 @@ export default function Demo() {
 
         {/* ЛЕВАЯ ПАНЕЛЬ - ИНСТРУМЕНТЫ */}
         <div className="col-span-3 space-y-4">
+            <Card variant="elevated">
+              <h3 className="text-lg font-semibold mb-4">🔍 Поиск</h3>
+              <div className="space-y-3">
+                <Search
+                  placeholder="Поиск по проекту..."
+                  onSearch={handleSearch}
+                  onClear={handleClearSearch}
+                  showClearButton={true}
+                />
+                {searchResults.length > 0 && (
+                  <div className="mt-4 space-y-2">
+                    <h4 className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                      Результаты поиска:
+                    </h4>
+                    {searchResults.map((result, index) => (
+                      <div 
+                        key={index}
+                        className="p-2 bg-white/50 dark:bg-gray-800/50 rounded-lg text-sm"
+                      >
+                        {result}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Card>
+
             <Card variant="elevated">
               <h3 className="text-lg font-semibold mb-4">🔧 Инструменты</h3>
               <div className="space-y-3">
